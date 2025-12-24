@@ -1,32 +1,9 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2021 Jitin Nair
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-
 %----------------------------------------------------------------------------------------
 %	DOCUMENT DEFINITION
 %----------------------------------------------------------------------------------------
 
 % article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,margin=0.5in,10pt]{article}
 
 %----------------------------------------------------------------------------------------
 %	FONT
@@ -108,20 +85,31 @@
     {
     }
 
-\newenvironment{joblong}[2]
+\newenvironment{joblong}[5] % #1: Title, \hfill #2: Duration, 
+                            % #3: Keywords, \hfill #4: Location
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+        \textbf{#1} & \hfill &  #2 \\[3.75pt]
+        \small{\textit{#3}} & \hfill & \textit{#4} \\[3.75pt]    
     \end{tabularx}
     \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    {#5}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
     }
     {
     \end{itemize}
     \end{minipage}    
     }
 
-
+\newenvironment{degree}[4] % #1: University, #2: Degree, #3: Duration, #4: Location
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+        \textbf{#1} & \hfill &  #3 \\[3.75pt]
+        {#2} & \hfill & \textit{#4} \\[3.75pt]    
+    \end{tabularx}
+    }
+    {
+    }
 
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
@@ -142,12 +130,12 @@
 % \end{tabularx}
 
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{SYED ALI}\\[7.5pt]
+\href{https://github.com/basisvectors}{\raisebox{-0.05\height}\faGithub\ basisvectors} \ $|$ \ 
+\href{https://linkedin.com/in/basisvectors}{\raisebox{-0.05\height}\faLinkedin\ basisvectors} \ $|$ \ 
+% \href{https://qaree.bi/tech}{\raisebox{-0.05\height}\faGlobe \ qaree.bi} \ $|$ \ 
+\href{mailto:syed.ali165@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ syed.ali165@gmail.com} \ $|$ \ 
+\href{tel:+919108993774}{\raisebox{-0.05\height}\faMobile \ +91 91089 93774}\\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -155,63 +143,85 @@
 %----------------------------------------------------------------------------------------
 
 %Interests/ Keywords/ Summary
-\section{Summary}
-This CV can also be automatically compiled and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+% \section{Summary}
+% This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
 
 %Experience
 \section{Work Experience}
 
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
+% \begin{jobshort}{Designation}{Jan 2021 - present}
+% long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
+% \end{jobshort}
 
 
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
+
+
+\begin{joblong}{Machine Learning Researcher, Beatoven.ai}{Jan 2024 – Present}
+    {Keywords: PyTorch, Diffusion Transformers, LoRA, Distributed Training, MLOps, Data Orchestration}{Bangalore, India}
+    {Specializing in generative audio models, large-scale data infrastructure, and foundation model training and optimization}
+    \item Designed Beatoven.ai's \textit{Composer} architecture — an embedding-guided loop retrieval and arrangement model for controllable music generation from text and audio embeddings.
+    \item Engineered low-level optimizations (GPU/CPU parallelization, multithreading, resumable batch processing) achieving a \textit{$7.5\times$ speedup} in training data preprocessing, reducing cleanup turnaround from multiple days to a few hours.
+    \item Built large-scale data curation, preprocessing, and augmentation pipelines for \textit{Maestro}, Beatoven's 2.5B parameter diffusion foundation model trained on several multi-million licensed music track datasets.
+    \item Built fine-tuning pipelines for SFX, genre, and artist adaptation; optimized hyperparameters for \textit{2$\times$ faster convergence} ($48\rightarrow 24$ GPU hours) and improved audio quality.
+    % \item Re-engineered the composer model inference system to process over \textit{100K source audio files within hours}, enabling full-scale embedding re-extraction and retrieval improvements.
+    \item Built modular and reusable distributed training and inference pipelines for in-house embedding extraction models, improving maintainability across research teams and ensuring scalable, collaborative development.
 \end{joblong}
-  
-%Projects
-\section{Projects}
+
+
+\begin{joblong}{AI Developer (Full-Stack \& Data Systems), Beatoven.ai}{July 2021 – Dec 2023}
+    {Keywords: Flask, React, MongoDB, Python, REST APIs, Microservices, NLP}{Bangalore, India}
+    {Specializing in full-stack development, large-scale data ingestion, and metadata automation for music AI systems}
+    \item Built of Beatoven.ai's \textit{artist portal and internal data ingestion system} — a full-stack Flask + React platform enabling large-scale artist submissions, metadata management, and human annotation workflows.
+    \item Designed and deployed a lightweight \textit{NLP model} for metadata extraction from unstructured text, reducing manual tagging overhead by \textit{$>70\%$} and enabling high-quality dataset curation for early music generation models.
+    \item Built scalable, asynchronous ingestion and cleaning pipelines handling \textit{thousands of artist submissions}, integrated directly with Beatoven's music composition and embedding systems.
+    \item Designed UX dashboards and automation workflows that streamlined team operations, reducing repetitive manual processing and forming the backbone of Beatoven's early data ingestion infrastructure.
+\end{joblong}
+
+    %Projects
+\section{Relevant Projects}
 
 \begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+\textbf{CrateDig — AI Sample Pack and Music Library Manager} & \hfill \href{https://github.com/basisvectors/CrateDig}{gh/CrateDig} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{\small{Thesis Project, Dec 2023 - May 2024}}  \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+Built an intelligent audio search app for music producers to organize and explore large sample libraries using natural language and reference audio queries. CrateDig analyzes audio, extracts embeddings, and enables fast similarity search via a local, offline desktop UI for Win/MacOS—streamlining sample discovery and retrieval from hours to seconds.
+}  \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 \section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
-
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
-
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
-\end{tabularx}
+\begin{degree}{Ramaiah University Of Applied Sciences}
+    {Bachelor of Technology in Computer Science and Engineering}{2020 - 2024}{Bangalore, India}
+\textbf{Relevant Coursework:} Machine Learning, System Design, DSA, Automata Theory, Digital Signal Processing, Operating Systems, Database Management Systems
+\end{degree}
 
 %----------------------------------------------------------------------------------------
 %	PUBLICATIONS
 %----------------------------------------------------------------------------------------
-\section{Publications}
-\begin{refsection}[citations.bib]
-\nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
+% \section{Publications}
+% \begin{refsection}[citations.bib]
+% \nocite{*}
+% \printbibliography[heading=none]
+% \end{refsection}
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
-\section{Skills}
+\section{Technical Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+Programming Languages &  \normalsize{Python, JavaScript, SQL, C, C++, Bash, Powershell, Batch}\\
+Cloud \& Infrastructure  &  \normalsize{GCP, Azure, AWS}\\
+DevOps &  \normalsize{Docker, Git, GitHub Actions, wandb}\\
+Machine Learning &  \normalsize{PyTorch, TensorFlow, Pandas}\\
+Music Information Retrieval & \normalsize{Librosa, Pydub, Essentia, torchaudio}\\
+Web Development &  \normalsize{Flask, React}\\
+Embedded DSP &  \normalsize{STM32, Daisy microcontrollers, C++ (DaisySP), audio DSP applications}\\
+Analog Circuits for Music Synthesis &  \normalsize{Eurorack module design, PCB design, Design for manufacturability}\\
 \end{tabularx}
 
-\vfill
-\center{\footnotesize Last updated: \today}
+% \vfill
+% \center{\footnotesize Last updated: \today}
 
 \end{document}
